@@ -11,6 +11,7 @@ class MainView(BaseView):
         BaseView.__init__(self, "MVVM Note Application")
         # Create view model
         # Your code here
+        self.main_view_model = MainViewModel()
 
         self.init_ui()
 
@@ -20,7 +21,7 @@ class MainView(BaseView):
     def bind_observable(self):
         # Subscribe to the notes behavior subject and update the view when the data change
         # Your code here
-        pass
+        self.main_view_model.notes.subscribe(lambda x: self.update_view(x))
 
     def init_ui(self):
         panel = wx.Panel(self)
@@ -57,10 +58,12 @@ class MainView(BaseView):
     def on_clear_all_button_clicked(self, e):
         # Clear all notes
         # Your code here
-        pass
+        self.main_view_model.clear_all()
+
 
     def on_add_note_button_clicked(self, e):
         content = self.note_input.GetValue()
         self.note_input.SetValue("")
         # Add new note
         # Your code here
+        self.main_view_model.add_note(content)
