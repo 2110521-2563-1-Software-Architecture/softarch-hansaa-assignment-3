@@ -7,11 +7,18 @@ from mvp.models.entities.note import Note
 class MainContract:
 
     class View(BaseView):
-
+        def update_view(self, items: List[Note]):
+            pass
         # Your code here
-        pass
 
     class Presenter(BasePresenter):
+        def add_note(self, note: str):
+            pass
+
+        def get_all_notes(self):
+            pass
+
+        def clear_all(self):
+            pass
 
         # Your code here
-        pass
